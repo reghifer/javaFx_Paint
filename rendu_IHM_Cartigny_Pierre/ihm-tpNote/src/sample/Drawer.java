@@ -22,6 +22,7 @@ public class Drawer {
 	public static void drawLine(double x1, double y1, double x2, double y2,Color c,Model mod,Pane p) {
 		Line line = new Line(x1,y1,x2,y2);
 		line.setFill(c);
+		
 		line.setOnMouseClicked(event ->{
 			if(mod.getCs() == CurrentState.select_Move) {
 				Drawer.deselect(mod);
@@ -29,6 +30,14 @@ public class Drawer {
 				line.setStroke(Color.CYAN);
 			}
 		});
+		
+		line.setOnDragDetected(event->{
+			double x = line.getStartX();
+			double y = line.getStartY();
+			String dataPosition = x + ";" + y;
+			mod.addActionDone(Action.move, line, dataPosition);
+		});
+		
 		line.setOnMouseDragged(event->{
 			if(line.equals(mod.getSelectedShape())) {
 				line.setStartX(event.getX());
@@ -37,6 +46,7 @@ public class Drawer {
 				line.setEndY(event.getY() + (y2 - y1));
 			}
 		});
+		mod.addActionDone(Action.delete, line, "");
 		p.getChildren().add(line);
 	}
 	
@@ -59,6 +69,7 @@ public class Drawer {
 		rectangle.setWidth(x2 - x1);
 		rectangle.setHeight(y2 - y1);
 		rectangle.setFill(c);
+		
 		rectangle.setOnMouseClicked(event ->{
 			if(mod.getCs() == CurrentState.select_Move) {
 				Drawer.deselect(mod);
@@ -66,6 +77,14 @@ public class Drawer {
 				rectangle.setStroke(Color.CYAN);
 			}
 		});
+		
+		rectangle.setOnDragDetected(event->{
+			double x = rectangle.getX();
+			double y = rectangle.getY();
+			String dataPosition = x + ";" + y;
+			mod.addActionDone(Action.move, rectangle, dataPosition);
+		});
+		
 		rectangle.setOnMouseDragged(event->{
 			if(rectangle.equals(mod.getSelectedShape())) {
 				rectangle.setX(event.getX());
@@ -73,6 +92,7 @@ public class Drawer {
 			}
 		});
 		p.getChildren().add(rectangle);
+		mod.addActionDone(Action.delete, rectangle, "");
 	}
 	
 	public static void drawEllipse(double x1, double y1, double x2, double y2,Color c,Model mod,Pane p) {
@@ -98,6 +118,7 @@ public class Drawer {
 		ellipse.setRadiusX(radiusX);
 		ellipse.setRadiusY(radiusY);
 		ellipse.setFill(c);
+		
 		ellipse.setOnMouseClicked(event ->{
 			if(mod.getCs() == CurrentState.select_Move) {
 				Drawer.deselect(mod);
@@ -105,6 +126,14 @@ public class Drawer {
 				ellipse.setStroke(Color.CYAN);
 			}
 		});
+		
+		ellipse.setOnDragDetected(event->{
+			double x = ellipse.getCenterX() - ellipse.getRadiusX();
+			double y = ellipse.getCenterY() - ellipse.getRadiusY();
+			String dataPosition = x + ";" + y;
+			mod.addActionDone(Action.move, ellipse, dataPosition);
+		});
+		
 		ellipse.setOnMouseDragged(event->{
 			if(ellipse.equals(mod.getSelectedShape())) {
 				ellipse.setCenterX(event.getX());
@@ -112,6 +141,7 @@ public class Drawer {
 			}
 		});
 		p.getChildren().add(ellipse);
+		mod.addActionDone(Action.delete, ellipse, "");
 	}
 	
 	public static void clone(Model mod, Pane p) {

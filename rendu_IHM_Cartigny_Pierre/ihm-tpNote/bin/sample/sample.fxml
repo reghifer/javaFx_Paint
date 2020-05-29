@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <left>
+      <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="74.00000610351563" minHeight="10.0" prefHeight="58.00000610351563" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="102.79999389648438" minHeight="10.0" prefHeight="50.200024414062504" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="195.19998779296876" minHeight="10.0" prefHeight="127.79997558593747" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="181.39999999999998" minHeight="10.0" prefHeight="62.6000061035156" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="181.20001831054685" minHeight="10.0" prefHeight="94.4000274658203" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BorderPane prefHeight="66.0" prefWidth="100.0">
+               <center>
+                  <Label text="Options :" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <RadioButton fx:id="radioSelectMove" mnemonicParsing="false" text="Select/Move" GridPane.rowIndex="1" />
+            <VBox prefHeight="69.0" prefWidth="100.0" GridPane.rowIndex="2">
+               <children>
+                  <RadioButton fx:id="radioEllipse" mnemonicParsing="false" prefHeight="18.0" prefWidth="82.0" text="Ellipse">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="radioRectangle" mnemonicParsing="false" text="Rectangle">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="radioLine" mnemonicParsing="false" text="Line">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </RadioButton>
+               </children>
+            </VBox>
+            <ColorPicker fx:id="colorDrawing" prefHeight="46.0" prefWidth="90.0" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </ColorPicker>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+               <children>
+                  <Button fx:id="buttonDelete" mnemonicParsing="false" prefHeight="26.0" prefWidth="143.0" text="Delete">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="15.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="buttonClone" mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" text="Clone">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="5.0" right="5.0" top="15.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </left>
+   <center>
+      <Pane fx:id="DrawingPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
